@@ -1,0 +1,17 @@
+{
+    "name": "alphanetbd/sms",
+    "description": "Alphanetbd SMS package for Laravel",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Alphanetbd\\Alphasms\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "md-riaz",
+            "email": "mdriaz@alpha.net.bd"
+        }
+    ],
+    "require": {}
+}
