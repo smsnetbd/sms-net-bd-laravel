@@ -18,7 +18,3 @@ Route::get('/', function () {
 });
 
 Route::get('/sms', [\App\Http\Controllers\SmsController::class, 'send']);
-
-Route::get('inspire', function(\Alphanetbd\Alphasms\AlphaSMS $sms) {
-    return view('welcome');
-});

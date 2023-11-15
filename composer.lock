@@ -4,8 +4,33 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e123c1e1e0af358e308b29489048f80f",
+    "content-hash": "342ebfaf201ea128422fadaf548525fc",
     "packages": [
+        {
+            "name": "alphanetbd/sms",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "packages/alphanetbd/sms",
+                "reference": "6361be9278e300104b073827d3a3a3a4f6d96e01"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Alphanetbd\\Alphasms\\": "src/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "md-riaz",
+                    "email": "mdriaz@alpha.net.bd"
+                }
+            ],
+            "description": "Alphanetbd SMS package for Laravel",
+            "transport-options": {
+                "relative": true
+            }
+        },
         {
             "name": "brick/math",
             "version": "0.11.0",
@@ -8070,7 +8095,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "alphanetbd/sms": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
