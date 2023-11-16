@@ -2,24 +2,27 @@
 
 namespace Alphanetbd\Alphasms;
 
+use Illuminate\Support\Facades\Http;
+
 class AlphaSMS
 {
-    // api url and api key as properties
     private $apiUrl = 'https://api.sms.net.bd';
     private $apiKey;
 
-    // constructor, get apikey from default env file
-    public function __construct () {
+    public function __construct()
+    {
         $this->apiKey = env('ALPHANETBD_SMS_API_KEY');
     }
 
-    public function sendSMS($message, $recipients, $schedule = null, $senderId = null)
+    public function sendSMS($message, $recipients, $senderId = null, $schedule = null)
     {
-        $url = $this->apiUrl . '/sendsms';
+        $url = "{$this->apiUrl}/sendsms";
+
         $params = [
             'api_key' => $this->apiKey,
             'msg' => $message,
-            'to' => $recipients
+            'to' => $recipients,
+            'sender_id' => $senderId,
         ];
 
         if ($schedule) {
@@ -28,49 +31,55 @@ class AlphaSMS
             $params['schedule'] = date('Y-m-d H:i:s', $scheduleTimestamp);
         }
 
-        if ($senderId) {
-            $params['sender_id'] = $senderId;
-        }
+        $response = $this->makeRequest('POST', $url, $params);
 
-        $response = $this->makeRequest($url, 'POST', $params);
-        return $response;
+        return $this->handleResponse($response);
     }
+
 
     public function getReport($requestId)
     {
-        $url = $this->apiUrl . '/report/request/' . $requestId;
+        $url = "{$this->apiUrl}/report/request/{$requestId}";
+
         $params = ['api_key' => $this->apiKey];
-        $response = $this->makeRequest($url, 'GET', $params);
-        return $response;
+
+        $response = $this->makeRequest('GET', $url, $params);
+
+        return $this->handleResponse($response);
     }
 
     public function getBalance()
     {
-        $url = $this->apiUrl . '/user/balance';
+        $url = "{$this->apiUrl}/user/balance";
+
         $params = ['api_key' => $this->apiKey];
-        $response = $this->makeRequest($url, 'GET', $params);
-        return $response;
+
+        $response = $this->makeRequest('GET', $url, $params);
+
+        return $this->handleResponse($response);
     }
 
-    private function makeRequest($url, $method, $params)
+    private function makeRequest($method, $url, $params)
     {
-        $ch = curl_init();
-
         if ($method === 'GET') {
-            $url .= '?' . http_build_query($params);
+            $response = Http::acceptJson()->get($url, $params);
+        } else {
+            $response = Http::acceptJson()->post($url, $params);
         }
 
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        return $response->json();
+    }
 
-        if ($method === 'POST') {
-            curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
+    private function handleResponse($response)
+    {
+        if (isset($response['error']) && $response['error'] == 0) {
+            return $response['data'] ?? null;
         }
 
-        $response = curl_exec($ch);
-        curl_close($ch);
+        // Log or handle the error as needed
+        // For now, let's throw an exception with the error message
+        throw new \Exception($response['msg'] ?? 'Unknown error');
 
-        return json_decode($response, true);
+        return false;
     }
 }

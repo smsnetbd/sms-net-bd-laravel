@@ -13,5 +13,7 @@
             "email": "mdriaz@alpha.net.bd"
         }
     ],
-    "require": {}
+    "require": {
+        "illuminate/http": "^10.32"
+    }
 }
