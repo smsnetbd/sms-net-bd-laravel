@@ -1,6 +1,6 @@
 {
     "name": "alphanetbd/sms",
-    "description": "SMS Package for Laravel - Simplify SMS integration with the SMS Gateway from sms.net.bd or alpha.net.bd. Send, check balance, get delivery reports, and manage SMS effortlessly in your Laravel applications.",
+    "description": "SMS Package for Laravel - Simplify SMS integration with the SMS Gateway from sms.net.bd or alpha.net.bd. Send message, check balance, get delivery reports, and manage SMS effortlessly in your Laravel applications.",
     "type": "library",
     "keywords": [
         "laravel",
