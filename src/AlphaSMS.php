@@ -1,6 +1,6 @@
 <?php
 
-namespace Alphanetbd\Alphasms;
+namespace Alphanetbd\SMS;
 
 use Illuminate\Support\Facades\Http;
 
@@ -14,7 +14,7 @@ class AlphaSMS
         $this->apiKey = env('ALPHANETBD_SMS_API_KEY');
     }
 
-    public function sendSMS($message, $recipients, $senderId = null, $schedule = null)
+    public function sendSMS($message, $recipients, $senderId = null)
     {
         $url = "{$this->apiUrl}/sendsms";
 
@@ -25,17 +25,44 @@ class AlphaSMS
             'sender_id' => $senderId,
         ];
 
-        if ($schedule) {
-            // Convert $schedule to a MySQL datetime format
-            $scheduleTimestamp = strtotime($schedule);
-            $params['schedule'] = date('Y-m-d H:i:s', $scheduleTimestamp);
-        }
-
         $response = $this->makeRequest('POST', $url, $params);
 
         return $this->handleResponse($response);
     }
 
+    public function sendScheduledSMS( $message, $recipients, $schedule, $senderId = null)
+    {
+        $url = "{$this->apiUrl}/sendsms";
+
+        $params = [
+            'api_key' => $this->apiKey,
+            'msg' => $message,
+            'to' => $recipients,
+            'sender_id' => $senderId,
+        ];
+
+        // use dateTime class with Asia/Dhaka timezone and convert it to timestamp
+        $scheduleTime = new \DateTime($schedule);
+
+        if (!$scheduleTime) {
+            throw new \Exception('Invalid schedule time');
+            return;
+        }
+
+        $scheduleTime->setTimezone(new \DateTimeZone('Asia/Dhaka'));
+
+        // check the timestamp is before the current time
+        if ($scheduleTime->getTimestamp() < time()) {
+            throw new \Exception('Scheduled time must be in the future');
+            return;
+        }
+
+        $params['schedule'] = $scheduleTime->format('Y-m-d H:i:s');
+
+        $response = $this->makeRequest('POST', $url, $params);
+
+        return $this->handleResponse($response);
+    }
 
     public function getReport($requestId)
     {
@@ -64,7 +91,7 @@ class AlphaSMS
         if ($method === 'GET') {
             $response = Http::acceptJson()->get($url, $params);
         } else {
-            $response = Http::acceptJson()->post($url, $params);
+            $response = Http::asForm()->acceptJson()->post($url, $params);
         }
 
         return $response->json();

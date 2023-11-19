@@ -80,7 +80,7 @@ class ComposerStaticInit40b7262001a78016ac3123a5c27d2908
         ),
         'A' => 
         array (
-            'Alphanetbd\\Alphasms\\' => 20,
+            'Alphanetbd\\SMS\\' => 15,
         ),
     );
 
@@ -216,7 +216,7 @@ class ComposerStaticInit40b7262001a78016ac3123a5c27d2908
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
         ),
-        'Alphanetbd\\Alphasms\\' => 
+        'Alphanetbd\\SMS\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),

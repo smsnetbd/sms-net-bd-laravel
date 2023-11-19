@@ -38,5 +38,5 @@ return array(
     'Fruitcake\\Cors\\' => array($vendorDir . '/fruitcake/php-cors/src'),
     'Doctrine\\Inflector\\' => array($vendorDir . '/doctrine/inflector/lib/Doctrine/Inflector'),
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
-    'Alphanetbd\\Alphasms\\' => array($baseDir . '/src'),
+    'Alphanetbd\\SMS\\' => array($baseDir . '/src'),
 );
