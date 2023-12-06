@@ -23,7 +23,7 @@ Install the package via Composer:
 composer require alphanetbd/sms
 ```
 
-Set your SMS API key in the .env file:
+Set your SMS API key in the `.env` file:
 
 ```bash
 ALPHANETBD_SMS_API_KEY=your-api-key
@@ -38,32 +38,48 @@ use Alphanetbd\SMS\AlphaSMS;
 $sms = new AlphaSMS();
 
 try {
+    // Send Single SMS
+    $response = $sms->sendSMS(
+        "Hello, this is a test SMS!",
+        "01701010101"
+    );
 
-  // Send Single SMS
-  $response = $sms->sendSMS('Hello, this is a test SMS!', '01701010101');
+    // Send Multiple Recipients SMS
+    $response = $sms->sendSMS(
+        "Hello, this is a test SMS!",
+        "01701010101,+8801856666666,8801349494949,01500000000"
+    );
 
-  // Send Multiple Recipients SMS
-  $response = $sms->sendSMS('Hello, this is a test SMS!', '01701010101,+8801856666666,8801349494949,01500000000');
+    // Send SMS With Sender ID or Masking Name
+    $response = $sms->sendSMS(
+        "Hello, this is a test SMS!",
+        "01701010101",
+        "Alpha Net"
+    );
 
-  // Send SMS With Sender ID or Masking Name
-  $response = $sms->sendSMS('Hello, this is a test SMS!', '01701010101', 'Alpha Net');
+    // Schedule SMS for future delivery
+    $response = $sms->sendScheduledSMS(
+        "Scheduled SMS",
+        "8801701010101",
+        "2023-12-01 14:30:00"
+    );
 
-  // Schedule SMS for future delivery
-  $response = $sms->sendScheduledSMS('Scheduled SMS', '8801701010101', '2023-12-01 14:30:00');
+    // Schedule SMS for future delivery with Sender ID
+    $response = $sms->sendScheduledSMS(
+        "Scheduled SMS with date",
+        "8801701010101",
+        "2023-12-01 14:30:00",
+        "Alpha Net"
+    );
 
-  // Schedule SMS for future delivery with Sender ID
-  $response = $sms->sendScheduledSMS('Scheduled SMS with date', '8801701010101', '2023-12-01 14:30:00', 'Alpha Net');
+    // Get SMS delivery report
+    $report = $sms->getReport($requestId);
 
-  // Get SMS delivery report
-  $report = $sms->getReport($requestId);
-
-  // Check account balance
-  $balanceInfo = $sms->getBalance();
-
-} catch(Exception $e){
-// handle $e->getMessage();
+    // Check account balance
+    $balanceInfo = $sms->getBalance();
+} catch (Exception $e) {
+    // handle $e->getMessage();
 }
-
 ```
 
 Note: Ensure to replace placeholder values with your actual API key, phone numbers, and messages.
