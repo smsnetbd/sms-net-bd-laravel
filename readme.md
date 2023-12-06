@@ -3,7 +3,14 @@
 [![Packagist version](https://img.shields.io/packagist/v/alphanetbd/sms)](https://packagist.org/packages/alphanetbd/sms) [![mit](https://img.shields.io/badge/License-MIT-green
 )](https://packagist.org/packages/alphanetbd/sms) ![Packagist Downloads](https://img.shields.io/packagist/dt/alphanetbd/sms)
 
-SMS Package for Laravel - Simplify SMS integration with the SMS Gateway from [sms.net.bd](https://www.sms.net.bd/api)/[alpha.net.bd](https://alpha.net.bd/SMS/API/). Send message, check balance, get delivery reports, and manage SMS effortlessly in your Laravel applications.
+SMS Package for Laravel - Simplify SMS integration with the SMS Gateway from [sms.net.bd](https://www.sms.net.bd/api)/[alpha.net.bd](https://alpha.net.bd/SMS/API/). Send messages, check balance, get delivery reports, and manage SMS effortlessly in your Laravel applications.
+
+The Alpha SMS Laravel package provides convenient access to the sms.net.bd REST API from php applications.
+
+Sign up for a [free sms.net.bd account](https://www.sms.net.bd/signup/) account today and get your API Key from our advanced SMS platform. Plus, enjoy free credits to try out your API in full!
+
+## Example
+ Check out the other code [examples](https://www.sms.net.bd/api#:~:text=SMS%20API%20Code-,samples,-.)
 
 ## Features
 
