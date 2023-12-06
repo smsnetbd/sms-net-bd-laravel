@@ -1,5 +1,8 @@
 # Alpha SMS Package for Laravel
 
+[![Packagist version](https://img.shields.io/packagist/v/alphanetbd/sms)](https://packagist.org/packages/alphanetbd/sms) [![mit](https://img.shields.io/badge/License-MIT-green
+)](https://packagist.org/packages/alphanetbd/sms) ![Packagist Downloads](https://img.shields.io/packagist/dt/alphanetbd/sms)
+
 SMS Package for Laravel - Simplify SMS integration with the SMS Gateway from [sms.net.bd](https://www.sms.net.bd/api)/[alpha.net.bd](https://alpha.net.bd/SMS/API/). Send message, check balance, get delivery reports, and manage SMS effortlessly in your Laravel applications.
 
 ## Features
