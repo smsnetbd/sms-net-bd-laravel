@@ -1,17 +1,17 @@
 <?php
 
-namespace Alphanetbd\SMS;
+namespace SMSNETBD\SMS;
 
 use Illuminate\Support\Facades\Http;
 
-class AlphaSMS
+class SMSNETBD
 {
     private $apiUrl = 'https://api.sms.net.bd';
     private $apiKey;
 
     public function __construct()
     {
-        $this->apiKey = env('ALPHANETBD_SMS_API_KEY');
+        $this->apiKey = env('SMSNETBD_API_KEY');
     }
 
     public function sendSMS($message, $recipients, $senderId = null)
@@ -30,7 +30,7 @@ class AlphaSMS
         return $this->handleResponse($response);
     }
 
-    public function sendScheduledSMS( $message, $recipients, $schedule, $senderId = null)
+    public function sendScheduledSMS($message, $recipients, $schedule, $senderId = null)
     {
         $url = "{$this->apiUrl}/sendsms";
 

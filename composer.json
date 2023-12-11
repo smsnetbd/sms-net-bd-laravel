@@ -1,5 +1,5 @@
 {
-    "name": "alphanetbd/sms",
+    "name": "sms.net.bd/sms",
     "description": "SMS Package for Laravel - Simplify SMS integration with the SMS Gateway from sms.net.bd or alpha.net.bd. Send message, check balance, get delivery reports, and manage SMS effortlessly in your Laravel applications.",
     "type": "library",
     "keywords": [
@@ -15,7 +15,7 @@
         "alpha.net.bd"
     ],
     "license": "MIT",
-    "homepage": "https://github.com/alphanetbd/alpha-sms-laravel",
+    "homepage": "https://github.com/smsnetbd/sms-net-bd-laravel",
     "authors": [
         {
             "name": "md-riaz",
@@ -25,11 +25,11 @@
         }
     ],
     "require": {
-        "illuminate/http": "^10.32"
+        "illuminate/http": "^7.0"
     },
     "autoload": {
         "psr-4": {
-            "Alphanetbd\\SMS\\": "src/"
+            "SMSNETBD\\SMS\\": "src/"
         }
     },
     "minimum-stability": "dev",
