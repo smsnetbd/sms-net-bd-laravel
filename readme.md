@@ -1,7 +1,6 @@
 # SMS.NET.BD SMS Package for Laravel
 
-[![Packagist version](https://img.shields.io/packagist/v/sms.net.bd/sms?v=1)](https://packagist.org/packages/sms.net.bd/sms) [![mit](https://img.shields.io/badge/License-MIT-green
-)](https://packagist.org/packages/sms.net.bd/sms) ![Packagist Downloads](https://img.shields.io/packagist/dt/sms.net.bd/sms?v=1)
+[![Packagist version](https://img.shields.io/packagist/v/sms.net.bd/sms?v=1)](https://packagist.org/packages/sms.net.bd/sms) [![mit](https://img.shields.io/badge/License-MIT-green)](https://packagist.org/packages/sms.net.bd/sms) ![Packagist Downloads](https://img.shields.io/packagist/dt/sms.net.bd/sms?v=1)
 
 SMS Package for Laravel - Simplify SMS integration with the SMS Gateway from [sms.net.bd](https://www.sms.net.bd/api). Send messages, check balance, get delivery reports, and manage SMS effortlessly in your Laravel applications.
 
@@ -10,7 +9,8 @@ The SMS Laravel package provides convenient access to the sms.net.bd REST API fr
 Sign up for a [free sms.net.bd account](https://www.sms.net.bd/signup/) today and get your API Key from our advanced SMS platform. Plus, enjoy free credits to try out your API in full!
 
 ## Example
- Check out the other code [examples](https://www.sms.net.bd/api#:~:text=SMS%20API%20Code-,samples,-.)
+
+Check out the other code [examples](https://www.sms.net.bd/api#:~:text=SMS%20API%20Code-,samples,-.)
 
 ## Features
 
@@ -30,7 +30,7 @@ Sign up for a [free sms.net.bd account](https://www.sms.net.bd/signup/) today an
 Install the package via Composer:
 
 ```bash
-composer require sms.net.bd/sms
+composer require sms_net_bd/sms
 ```
 
 Set your SMS API key in the `.env` file:
@@ -38,6 +38,7 @@ Set your SMS API key in the `.env` file:
 ```bash
 SMS_NET_BD_API_KEY=your-api-key
 ```
+
 Note: Ensure to replace placeholder `your-api-key` with your actual API key
 
 ## Usage
@@ -88,7 +89,7 @@ try {
 
     // Check account balance
     $balanceInfo = $sms->getBalance();
-    
+
 } catch (Exception $e) {
     // handle $e->getMessage();
 }
