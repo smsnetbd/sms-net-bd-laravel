@@ -1,10 +1,10 @@
 <?php
 
-namespace sms_net_bd\sms;
+namespace sms_net_bd;
 
 use Illuminate\Support\Facades\Http;
 
-class sms_net_bd
+class SMS
 {
     private $apiUrl = 'https://api.sms.net.bd';
     private $apiKey;

@@ -1,20 +1,20 @@
-# Alpha SMS Package for Laravel
+# SMS.NET.BD SMS Package for Laravel
 
-[![Packagist version](https://img.shields.io/packagist/v/alphanetbd/sms)](https://packagist.org/packages/alphanetbd/sms) [![mit](https://img.shields.io/badge/License-MIT-green
-)](https://packagist.org/packages/alphanetbd/sms) ![Packagist Downloads](https://img.shields.io/packagist/dt/alphanetbd/sms)
+[![Packagist version](https://img.shields.io/packagist/v/sms.net.bd/sms)](https://packagist.org/packages/sms.net.bd/sms) [![mit](https://img.shields.io/badge/License-MIT-green
+)](https://packagist.org/packages/sms.net.bd/sms) ![Packagist Downloads](https://img.shields.io/packagist/dt/sms.net.bd/sms)
 
-SMS Package for Laravel - Simplify SMS integration with the SMS Gateway from [sms.net.bd](https://www.sms.net.bd/api)/[alpha.net.bd](https://alpha.net.bd/SMS/API/). Send messages, check balance, get delivery reports, and manage SMS effortlessly in your Laravel applications.
+SMS Package for Laravel - Simplify SMS integration with the SMS Gateway from [sms.net.bd](https://www.sms.net.bd/api). Send messages, check balance, get delivery reports, and manage SMS effortlessly in your Laravel applications.
 
-The Alpha SMS Laravel package provides convenient access to the sms.net.bd REST API from php applications.
+The SMS Laravel package provides convenient access to the sms.net.bd REST API from php applications.
 
-Sign up for a [free sms.net.bd account](https://www.sms.net.bd/signup/) account today and get your API Key from our advanced SMS platform. Plus, enjoy free credits to try out your API in full!
+Sign up for a [free sms.net.bd account](https://www.sms.net.bd/signup/) today and get your API Key from our advanced SMS platform. Plus, enjoy free credits to try out your API in full!
 
 ## Example
  Check out the other code [examples](https://www.sms.net.bd/api#:~:text=SMS%20API%20Code-,samples,-.)
 
 ## Features
 
-- Send SMS messages through the [Alpha Net SMS Gateway](https://www.sms.net.bd).
+- Send SMS messages through the [sms.net.bd sms gateway](https://www.sms.net.bd/api).
 - Schedule SMS messages for future delivery.
 - Send SMS to multiple recipients with sender id
 - Retrieve SMS delivery reports.
@@ -30,22 +30,23 @@ Sign up for a [free sms.net.bd account](https://www.sms.net.bd/signup/) account 
 Install the package via Composer:
 
 ```bash
-composer require alphanetbd/sms
+composer require sms.net.bd/sms
 ```
 
 Set your SMS API key in the `.env` file:
 
 ```bash
-ALPHANETBD_SMS_API_KEY=your-api-key
+SMS_NET_BD_API_KEY=your-api-key
 ```
+Note: Ensure to replace placeholder `your-api-key` with your actual API key
 
 ## Usage
 
 ```php
-use Alphanetbd\SMS\AlphaSMS;
+use sms_net_bd\SMS; // Import the SMS class
 
-// Create an instance of AlphaSMS
-$sms = new AlphaSMS();
+// Create an instance of the class
+$sms = new SMS();
 
 try {
     // Send Single SMS
@@ -71,7 +72,7 @@ try {
     $response = $sms->sendScheduledSMS(
         "Scheduled SMS",
         "8801701010101",
-        "2023-12-01 14:30:00"
+        "2023-12-01 14:30:00" // Date format: YYYY-MM-DD HH:MM:SS
     );
 
     // Schedule SMS for future delivery with Sender ID
@@ -87,12 +88,13 @@ try {
 
     // Check account balance
     $balanceInfo = $sms->getBalance();
+    
 } catch (Exception $e) {
     // handle $e->getMessage();
 }
 ```
 
-Note: Ensure to replace placeholder values with your actual API key, phone numbers, and messages.
+Note: Ensure to replace placeholder values with your phone numbers and messages.
 
 ## Error Handling
 
@@ -113,8 +115,8 @@ This package is open-source software licensed under the [MIT license](LICENSE.md
 
 ## Contribution
 
-Contributions are welcome! Feel free to submit [issues](https://github.com/alphanetbd/alpha-sms-laravel/issues) or [open a pull request](https://github.com/alphanetbd/alpha-sms-laravel/pulls).
+Contributions are welcome! Feel free to submit [issues](https://github.com/smsnetbd/sms-net-bd-laravel/issues) or [open a pull request](https://github.com/smsnetbd/sms-net-bd-laravel/pulls).
 
 ## Support
 
-If you have any questions or feedback, please [open an issue](https://github.com/alphanetbd/alpha-sms-laravel/issues) or [open a pull request](https://github.com/alphanetbd/alpha-sms-laravel/pulls).
+If you have any questions or feedback, please [open an issue](https://github.com/smsnetbd/sms-net-bd-laravel/issues) or [open a pull request](https://github.com/smsnetbd/sms-net-bd-laravel/pulls).
