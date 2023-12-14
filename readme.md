@@ -1,7 +1,7 @@
 # SMS.NET.BD SMS Package for Laravel
 
-[![Packagist version](https://img.shields.io/packagist/v/sms.net.bd/sms)](https://packagist.org/packages/sms.net.bd/sms) [![mit](https://img.shields.io/badge/License-MIT-green
-)](https://packagist.org/packages/sms.net.bd/sms) ![Packagist Downloads](https://img.shields.io/packagist/dt/sms.net.bd/sms)
+[![Packagist version](https://img.shields.io/packagist/v/sms.net.bd/sms?v=1)](https://packagist.org/packages/sms.net.bd/sms) [![mit](https://img.shields.io/badge/License-MIT-green
+)](https://packagist.org/packages/sms.net.bd/sms) ![Packagist Downloads](https://img.shields.io/packagist/dt/sms.net.bd/sms?v=1)
 
 SMS Package for Laravel - Simplify SMS integration with the SMS Gateway from [sms.net.bd](https://www.sms.net.bd/api). Send messages, check balance, get delivery reports, and manage SMS effortlessly in your Laravel applications.
 
