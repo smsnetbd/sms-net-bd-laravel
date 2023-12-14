@@ -1,5 +1,5 @@
 {
-    "name": "sms.net.bd/sms",
+    "name": "sms_net_bd/sms",
     "description": "SMS Package for Laravel - Simplify SMS integration with the SMS Gateway from sms.net.bd. Send message, check balance, get delivery reports, and manage SMS effortlessly in your Laravel applications.",
     "type": "library",
     "keywords": [
