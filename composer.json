@@ -1,6 +1,6 @@
 {
     "name": "sms.net.bd/sms",
-    "description": "SMS Package for Laravel - Simplify SMS integration with the SMS Gateway from sms.net.bd or alpha.net.bd. Send message, check balance, get delivery reports, and manage SMS effortlessly in your Laravel applications.",
+    "description": "SMS Package for Laravel - Simplify SMS integration with the SMS Gateway from sms.net.bd. Send message, check balance, get delivery reports, and manage SMS effortlessly in your Laravel applications.",
     "type": "library",
     "keywords": [
         "laravel",
@@ -24,12 +24,9 @@
             "homepage": "https://github.com/md-riaz"
         }
     ],
-    "require": {
-        "illuminate/http": "^7.0"
-    },
     "autoload": {
         "psr-4": {
-            "SMSNETBD\\SMS\\": "src/"
+            "sms_net_bd\\sms\\": "src/"
         }
     },
     "minimum-stability": "dev",

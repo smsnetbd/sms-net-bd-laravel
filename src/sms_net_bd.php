@@ -1,17 +1,17 @@
 <?php
 
-namespace SMSNETBD\SMS;
+namespace sms_net_bd\sms;
 
 use Illuminate\Support\Facades\Http;
 
-class SMSNETBD
+class sms_net_bd
 {
     private $apiUrl = 'https://api.sms.net.bd';
     private $apiKey;
 
     public function __construct()
     {
-        $this->apiKey = env('SMSNETBD_API_KEY');
+        $this->apiKey = env('SMS_NET_BD_API_KEY');
     }
 
     public function sendSMS($message, $recipients, $senderId = null)
