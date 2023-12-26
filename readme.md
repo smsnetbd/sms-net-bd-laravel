@@ -66,7 +66,7 @@ try {
     $response = $sms->sendSMS(
         "Hello, this is a test SMS!",
         "01701010101",
-        "Alpha Net"
+        "sms.net.bd"
     );
 
     // Schedule SMS for future delivery
@@ -81,7 +81,7 @@ try {
         "Scheduled SMS with date",
         "8801701010101",
         "2023-12-01 14:30:00",
-        "Alpha Net"
+        "sms.net.bd"
     );
 
     // Get SMS delivery report
