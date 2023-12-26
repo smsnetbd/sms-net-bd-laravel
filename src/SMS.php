@@ -102,7 +102,5 @@ class SMS
         // Log or handle the error as needed
         // For now, let's throw an exception with the error message
         throw new \Exception($response['msg'] ?? 'Unknown error');
-
-        return false;
     }
 }
