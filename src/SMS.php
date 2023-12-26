@@ -41,23 +41,19 @@ class SMS
             'sender_id' => $senderId,
         ];
 
-        // use dateTime class with Asia/Dhaka timezone and convert it to timestamp
-        $scheduleTime = new \DateTime($schedule);
+        $currentDate = new \DateTime('now', new \DateTimeZone('Asia/Dhaka'));
 
-        if (!$scheduleTime) {
-            throw new \Exception('Invalid schedule time');
-            return;
-        }
-
-        $scheduleTime->setTimezone(new \DateTimeZone('Asia/Dhaka'));
+        $scheduleTime = strtotime(
+            $schedule,
+            $currentDate->getTimestamp()
+        );
 
         // check the timestamp is before the current time
-        if ($scheduleTime->getTimestamp() < time()) {
-            throw new \Exception('Scheduled time must be in the future');
-            return;
+        if ($scheduleTime < time()) {
+            throw new \Exception('Schedule time must be in the future');
         }
 
-        $params['schedule'] = $scheduleTime->format('Y-m-d H:i:s');
+        $params['schedule'] = date('Y-m-d H:i:s', $scheduleTime); // in YYYY-MM-DD HH:MM:SS format
 
         $response = $this->makeRequest('POST', $url, $params);
 
@@ -100,7 +96,7 @@ class SMS
     private function handleResponse($response)
     {
         if (isset($response['error']) && $response['error'] == 0) {
-            return $response['data'] ?? null;
+            return $response['data'] ?? $response['msg'];
         }
 
         // Log or handle the error as needed
