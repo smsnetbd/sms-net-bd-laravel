@@ -16,6 +16,11 @@ class SMS
 
     public function sendSMS($message, $recipients, $senderId = null)
     {
+        // check api key
+        if (empty($this->apiKey)) {
+            throw new \Exception('API key is required in .env file');
+        }
+
         $url = "{$this->apiUrl}/sendsms";
 
         $params = [
@@ -32,6 +37,11 @@ class SMS
 
     public function sendScheduledSMS($message, $recipients, $schedule, $senderId = null)
     {
+        // check api key
+        if (empty($this->apiKey)) {
+            throw new \Exception('API key is required in .env file');
+        }
+
         $url = "{$this->apiUrl}/sendsms";
 
         $params = [
@@ -62,6 +72,11 @@ class SMS
 
     public function getReport($requestId)
     {
+        // check api key
+        if (empty($this->apiKey)) {
+            throw new \Exception('API key is required in .env file');
+        }
+
         $url = "{$this->apiUrl}/report/request/{$requestId}";
 
         $params = ['api_key' => $this->apiKey];
@@ -73,6 +88,11 @@ class SMS
 
     public function getBalance()
     {
+        // check api key
+        if (empty($this->apiKey)) {
+            throw new \Exception('API key is required in .env file');
+        }
+
         $url = "{$this->apiUrl}/user/balance";
 
         $params = ['api_key' => $this->apiKey];
