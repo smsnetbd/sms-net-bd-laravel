@@ -51,19 +51,22 @@ class SMS
             'sender_id' => $senderId,
         ];
 
-        $currentDate = new \DateTime('now', new \DateTimeZone('Asia/Dhaka'));
-
-        $scheduleTime = strtotime(
-            $schedule,
-            $currentDate->getTimestamp()
+        $timezone = new \DateTimeZone('Asia/Dhaka');
+        $currentDate = new \DateTime(
+            'now',
+            $timezone
         );
 
-        // check the timestamp is before the current time
-        if ($scheduleTime < time()) {
+        $scheduleTime = strtotime($schedule, $currentDate->getTimestamp());
+
+        // get the current time in the 'Asia/Dhaka' timezone
+        $currentTime = (new \DateTime('now', $timezone))->getTimestamp();
+
+        if ($scheduleTime < $currentTime) {
             throw new \Exception('Schedule time must be in the future');
         }
 
-        $params['schedule'] = date('Y-m-d H:i:s', $scheduleTime); // in YYYY-MM-DD HH:MM:SS format
+        $params['schedule'] = date('Y-m-d H:i:s', $scheduleTime); // in YYYY-MM-DD HH:MM:SS format for Asia/Dhaka timezone
 
         $response = $this->makeRequest('POST', $url, $params);
 
