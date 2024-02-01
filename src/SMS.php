@@ -2,7 +2,8 @@
 
 namespace sms_net_bd;
 
-use Illuminate\Support\Facades\Http;
+use GuzzleHttp\Client;
+use GuzzleHttp\RequestOptions;
 
 class SMS
 {
@@ -106,14 +107,23 @@ class SMS
     }
 
     private function makeRequest($method, $url, $params)
-    {
+    { 
+        $client = new Client();
+        
+        $options = [
+            'headers' => [
+                'Accept' => 'application/json',
+            ],
+        ];
+        
         if ($method === 'GET') {
-            $response = Http::acceptJson()->get($url, $params);
+            $response = $client->get($url, $options);
         } else {
-            $response = Http::asForm()->acceptJson()->post($url, $params);
+            $options[RequestOptions::FORM_PARAMS] = $params;
+            $response = $client->post($url, $options);
         }
-
-        return $response->json();
+        
+        return json_decode($response->getBody(), true);
     }
 
     private function handleResponse($response)
