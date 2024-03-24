@@ -117,6 +117,7 @@ class SMS
         ];
         
         if ($method === 'GET') {
+            $options[RequestOptions::QUERY] = $params;
             $response = $client->get($url, $options);
         } else {
             $options[RequestOptions::FORM_PARAMS] = $params;
